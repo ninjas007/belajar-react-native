@@ -1,9 +1,14 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useEffect} from 'react';
+import { StyleSheet, Text, View, BackHandler } from 'react-native';
 import AlbumList from '../components/AlbumList.js';
 
 const Album = (props) => {
+  useEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress', () => true )
+    return() => {
+      BackHandler.addEventListener('hardwareBackPress', () => true )
+    }
+  }, [])
   return (
     <View style={{ flex: 1 }}>
       <View style={styles.viewStyle}>
